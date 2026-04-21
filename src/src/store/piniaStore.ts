@@ -1,17 +1,29 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, type Ref } from "vue";
 import { ApiCep } from "@/services/api";
+import type { Endereco } from "@/schemas/EnderecoSchema";
 
 export const useMainStore = defineStore('main', () => {
-    const jsonCep = ref({})
+    const ObjEndereco: Ref<Endereco> = ref({} as Endereco)
+    const listEndereco: Ref<Endereco[]> = ref([] as Endereco[])
 
-    function getJsonCep(): any {
-        return jsonCep.value
+    function getEndereco(): Endereco {
+        return ObjEndereco.value
     }
 
-    async function setJsonCep(cep: string) {
-        jsonCep.value = await ApiCep.getCep(cep)
+    function getListEndereco(): Endereco[] {
+        return listEndereco.value
     }
 
-    return { jsonCep, setJsonCep }
+    async function setEndereco(cep: string): Promise<void> {
+        const response: Endereco = await ApiCep.getEndereco(cep)
+        ObjEndereco.value = response
+    }
+
+    async function setListEndereco(UF: string, cidade: string, rua: string): Promise<void> {
+        const response: Endereco[] = await ApiCep.getCep(UF, cidade, rua)
+        listEndereco.value = response
+    }
+
+    return { setEndereco, getEndereco, setListEndereco, getListEndereco }
 })

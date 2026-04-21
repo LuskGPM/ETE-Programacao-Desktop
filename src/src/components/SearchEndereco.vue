@@ -6,10 +6,11 @@ const input_cep: Ref<string> = ref('')
 const mainStore = useMainStore();
 
 function buscarCep(): void {
-    if (input_cep.value == undefined || input_cep.value.length != 8) 
+    const cep_to_search = input_cep.value.replace('-', '');
+    if (cep_to_search == undefined || cep_to_search.length != 8) 
         alert('Digite um CEP válido');
 
-    else mainStore.setJsonCep(input_cep.value);
+    else mainStore.setEndereco(cep_to_search);
 }
 
 function criarMascaraCep(): void {
@@ -21,5 +22,5 @@ function criarMascaraCep(): void {
 <template>
     <label for="campoCep">Digite seu CEP</label>
     <input type="text" id="campoCep" v-model="input_cep" @input="criarMascaraCep()">
-    <button @click="buscarCep()" :disabled="input_cep.length !== 8">Buscar CEP</button>
+    <button @click="buscarCep()">Buscar CEP</button>
 </template>
