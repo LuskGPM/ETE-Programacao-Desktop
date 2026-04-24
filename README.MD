@@ -15,4 +15,4 @@ Bem-vindo ao repositório de aulas. Abaixo encontras os links diretos para facil
 1. Certifica-te de ter o Python instalado.
 2. Clone o repositório:
    ```bash
-   git clone [url do repositório]
+   git clone "https://github.com/LuskGPM/ETE-Aulas-PD-EN.git"
