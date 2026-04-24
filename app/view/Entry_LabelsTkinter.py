@@ -1,6 +1,7 @@
 import tkinter as tk
+from model.ListaUserss import UserRepo
 
-class Entry_LabelsTkinter():
+class Entry_LabelsFormulario():
     def __init__(self, master):
         self.master = master
 
@@ -24,6 +25,5 @@ class Entry_LabelsTkinter():
         self.entry_telefone = tk.Entry(self.master, font=fonte)
         self.entry_telefone.grid(row=row, column=column+1, padx=5, pady=5, ipady=5)
 
-    def submit_button(self, fonte: tuple = ("Arial", 12), row: int = 0, column: int = 0):
-        self.button_submit = tk.Button(self.master, text="Submit", font=fonte)
-        self.button_submit.grid(row=row, column=column+1, columnspan=2, pady=10, padx=5, ipadx=15, ipady=5)
+
+
