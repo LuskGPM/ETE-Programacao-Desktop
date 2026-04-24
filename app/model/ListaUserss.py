@@ -1,4 +1,3 @@
-
 class UserRepo:
     def __init__(self):
         self.list_users = []
