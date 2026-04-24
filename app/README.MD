@@ -2,6 +2,8 @@
 
 Este projeto é um exemplo de aplicação desktop em Python usando `tkinter` para criar uma interface gráfica simples de cadastro e gerenciamento de usuários.
 
+![Imagem da interface do aplicativo](../img/aplicativo-desktop.png)
+
 ## Visão Geral
 
 A pasta `app` contém uma aplicação estruturada em camadas:
