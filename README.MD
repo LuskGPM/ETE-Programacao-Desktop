@@ -1,7 +1,3 @@
-import os
-
-readme_content = """# 📚 ETE-Aulas-PD-EN
-
 Bem-vindo ao repositório de aulas. Abaixo encontras os links diretos para facilitar a navegação entre as pastas principais do projeto.
 
 ## 🚀 Atalhos Rápidos
