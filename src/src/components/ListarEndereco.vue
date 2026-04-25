@@ -13,10 +13,11 @@ const showEndereco = computed<boolean>(() => {
 </script>
 
 <template>
-    <ul v-if="showEndereco" class="list-group">
-        <li v-for="value, key in cepEndereco" :key="key" class="list-group-item d-flex gap-3">
-            <input type="text" class="input" readonly :value="key">
-            <input type="text" class="form-control" readonly :value="value">
+    <p v-if="!showEndereco">Nenhum endereço encontrado.</p>
+    <ul v-else class="list-group">
+        <li v-for="value, key in cepEndereco" :key="key" class="form-floating mb-3" style="list-style: none;">
+            <input type="text" id="valueInput" class="form-control" readonly :value="value">
+            <label for="valueInput">{{key}}</label>
         </li>
     </ul>
 </template>

@@ -51,15 +51,18 @@ const store = useMainStore()
 const UF: Ref<string> = ref('AC')
 const cidade: Ref<string> = ref('')
 const logradouro: Ref<string> = ref('')
+const loading: Ref<boolean> = ref(false)
 
 async function buscarCEP(): Promise<void> {
+    loading.value = true
     await store.setListEndereco(UF.value, cidade.value, logradouro.value)
+    loading.value = false
 }
 </script>
 
 <template>
-    <div class="container-sm row gap-4">
-        <div class="col-4 bg-light p-5 rounded-4 h-25">
+    <div class="container-sm d-flex flex-column gap-4">
+        <div class="bg-light p-4 rounded-4 h-25">
             <h2 class="mb-3">Digite os dados para encontrar o CEP</h2>
             <label for="UF" class="form-label">Selecione a unidade federativa</label>
             <select name="UF" id="UF" class="w-100 form-select-lg mb-3" v-model="UF">
@@ -85,8 +88,11 @@ async function buscarCEP(): Promise<void> {
             <input type="text" id="logradouro" class="form-control mb-3" v-model="logradouro">
             <button @click="buscarCEP()" class="btn btn-primary">Buscar CEP</button>
         </div>
-        <div class="col bg-light p-5 rounded-4 max-h-25">
-            <ListarEnderecoList />
+        <div class="bg-light p-4 rounded-4">
+            <div class="spinner-border" role="status" v-if="loading">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <ListarEnderecoList v-else />
         </div>
     </div>
 </template>
