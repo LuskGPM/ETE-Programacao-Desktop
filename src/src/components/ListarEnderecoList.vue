@@ -14,9 +14,9 @@ const showEndereco = computed<boolean>(() => {
 
 <template>
     <p v-if="!showEndereco">Nenhum endereço encontrado.</p>
-    <ul v-else v-for="cepEndereco in cepEnderecoList" class="list-group mb-3">
+    <ul v-else v-for="cepEndereco in cepEnderecoList" class="list-group mb-3 p-4 bg-body-secondary">
         <li v-for="value, key in cepEndereco" :key="key" style="list-style: none; ">
-            <div v-if="key == 'cep' || key == 'logradouro' || key == 'uf' || key == 'localidade' || key == 'bairro'" class="form-floating mb-2 mt-2">
+            <div v-if="key == 'logradouro' || key == 'cep' || key == 'uf' || key == 'localidade' || key == 'bairro'" class="form-floating mb-2 mt-2">
                 <input type="text" class="form-control" id="valueInput" readonly :value="value">
                 <label for="valueInput" class="form-label">{{ key }}</label>
             </div>

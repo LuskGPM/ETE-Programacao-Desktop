@@ -17,7 +17,7 @@ const showEndereco = computed<boolean>(() => {
     <ul v-else class="list-group">
         <li v-for="value, key in cepEndereco" :key="key" class="form-floating mb-3" style="list-style: none;">
             <input type="text" id="valueInput" class="form-control" readonly :value="value">
-            <label for="valueInput">{{key}}</label>
+            <label for="valueInput">{{ key }}</label>
         </li>
     </ul>
 </template>

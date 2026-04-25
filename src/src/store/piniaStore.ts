@@ -15,6 +15,14 @@ export const useMainStore = defineStore('main', () => {
         return listEndereco.value
     }
 
+    function clearEndereco(): void {
+        ObjEndereco.value = {} as Endereco
+    }
+
+    function clearListEndereco(): void {
+        listEndereco.value = [] as Endereco[]
+    }
+
     async function setEndereco(cep: string): Promise<void> {
         const response: Endereco = await ApiCep.getEndereco(cep)
         ObjEndereco.value = response
@@ -26,5 +34,5 @@ export const useMainStore = defineStore('main', () => {
         listEndereco.value = response
     }
 
-    return { setEndereco, getEndereco, setListEndereco, getListEndereco }
+    return { setEndereco, getEndereco, setListEndereco, getListEndereco, clearEndereco, clearListEndereco }
 })
