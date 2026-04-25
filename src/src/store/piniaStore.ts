@@ -21,6 +21,7 @@ export const useMainStore = defineStore('main', () => {
     }
 
     async function setListEndereco(UF: string, cidade: string, rua: string): Promise<void> {
+        console.log(`setListEndereco: ${UF}, ${cidade}, ${rua}`)
         const response: Endereco[] = await ApiCep.getCep(UF, cidade, rua)
         listEndereco.value = response
     }

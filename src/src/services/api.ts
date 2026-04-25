@@ -7,12 +7,13 @@ class Api {
     })
 
     public async getEndereco(cep: string): Promise<Endereco> {
-        const response = await this.api.get(`${cep}/json/`)
+        const response = await this.api.get<Endereco>(`${cep}/json/`)
         return response.data
     }
 
     public async getCep(UF: string, cidade: string, rua: string): Promise<Endereco[]> {
-        const response = await this.api.get(`${UF}/${cidade}/${rua}/json/`)
+        console.log(`${UF}/${cidade}/${rua}/json/`)
+        const response = await this.api.get<Endereco[]>(`${UF}/${cidade}/${rua}/json/`)
         return response.data
     }
 }

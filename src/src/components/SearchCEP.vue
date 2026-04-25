@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useMainStore } from '@/store/piniaStore';
 import { reactive, ref, type Ref } from 'vue';
+import ListarEnderecoList from './ListarEnderecoList.vue';
 
 
 const norteUF = reactive({
@@ -47,38 +48,45 @@ const sulUF = reactive({
 
 const store = useMainStore()
 
-const UF: Ref<string> = ref('')
+const UF: Ref<string> = ref('AC')
 const cidade: Ref<string> = ref('')
 const logradouro: Ref<string> = ref('')
 
 async function buscarCEP(): Promise<void> {
-    
+    await store.setListEndereco(UF.value, cidade.value, logradouro.value)
 }
 </script>
 
 <template>
-    <h2> Digite os dados para encontrar o CEP</h2>
-    <label for="UF">Selecione a unidade federativa</label>
-    <select name="UF" id="UF">
-        <optgroup label="Norte">
-            <option v-for="(value, key) in norteUF" :key="key" :value="key">{{ value }}</option>
-        </optgroup>
-        <optgroup label="Nordeste">
-            <option v-for="(value, key) in nordesteUF" :key="key" :value="key">{{ value }}</option>
-        </optgroup>
-        <optgroup label="Centro-Oeste">
-            <option v-for="(value, key) in centroOesteUF" :key="key" :value="key">{{ value }}</option>
-        </optgroup>
-        <optgroup label="Sudeste">
-            <option v-for="(value, key) in sudesteUF" :key="key" :value="key">{{ value }}</option>
-        </optgroup>
-        <optgroup label="Sul">
-            <option v-for="(value, key) in sulUF" :key="key" :value="key">{{ value }}</option>
-        </optgroup>
-    </select>
-    <label for="cidade">Nome da cidade</label>
-    <input type="text" id="cidade">
-    <label for="logradouro">Logradouro</label>
-    <input type="text" id="logradouro">
-    <button @click="buscarCEP()">Buscar CEP</button>
+    <div class="container-sm row gap-4">
+        <div class="col-4 bg-light p-5 rounded-4 h-25">
+            <h2 class="mb-3">Digite os dados para encontrar o CEP</h2>
+            <label for="UF" class="form-label">Selecione a unidade federativa</label>
+            <select name="UF" id="UF" class="w-100 form-select-lg mb-3" v-model="UF">
+                <optgroup label="Norte">
+                    <option v-for="(value, key) in norteUF" :key="key" :value="key">{{ value }}</option>
+                </optgroup>
+                <optgroup label="Nordeste">
+                    <option v-for="(value, key) in nordesteUF" :key="key" :value="key">{{ value }}</option>
+                </optgroup>
+                <optgroup label="Centro-Oeste">
+                    <option v-for="(value, key) in centroOesteUF" :key="key" :value="key">{{ value }}</option>
+                </optgroup>
+                <optgroup label="Sudeste">
+                    <option v-for="(value, key) in sudesteUF" :key="key" :value="key">{{ value }}</option>
+                </optgroup>
+                <optgroup label="Sul">
+                    <option v-for="(value, key) in sulUF" :key="key" :value="key">{{ value }}</option>
+                </optgroup>
+            </select>
+            <label for="cidade" class="form-label">Nome da cidade</label>
+            <input type="text" id="cidade" class="form-control mb-3" v-model="cidade">
+            <label for="logradouro" class="form-label">Logradouro</label>
+            <input type="text" id="logradouro" class="form-control mb-3" v-model="logradouro">
+            <button @click="buscarCEP()" class="btn btn-primary">Buscar CEP</button>
+        </div>
+        <div class="col bg-light p-5 rounded-4 max-h-25">
+            <ListarEnderecoList />
+        </div>
+    </div>
 </template>

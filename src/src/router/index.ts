@@ -1,4 +1,4 @@
-import { createRouter, createMemoryHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 import CepView from "@/components/view/CepView.vue";
 import EnderecoView from "@/components/view/EnderecoView.vue";
@@ -11,6 +11,6 @@ const routes = [
 ]
 
 export const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes,
 })

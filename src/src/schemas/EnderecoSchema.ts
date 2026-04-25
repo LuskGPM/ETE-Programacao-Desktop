@@ -6,7 +6,6 @@ export interface Endereco {
     localidade: string,
     uf: string,
     ibge: string,
-    gia: string,
     ddd: string,
     siafi: string
 }
