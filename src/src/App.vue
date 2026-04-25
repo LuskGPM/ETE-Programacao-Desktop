@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import ListarCep from './components/ListarEndereco.vue';
-import SearchCep from './components/SearchEndereco.vue';
 
 </script>
 
 <template>
-  <SearchCep />
-  <ListarCep />
+  <router-view />
 </template>
 
-<style scoped></style>
+<style>
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+</style>
