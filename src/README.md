@@ -2,8 +2,6 @@
 
 Este projeto é uma aplicação web construída com **Vue 3**, **TypeScript**, **Vite**, **Pinia**, **Vue Router** e **Bootstrap 5**. O sistema utiliza a API pública **ViaCEP** para localizar informações de endereço a partir de um CEP ou para buscar CEPs a partir de estado, cidade e logradouro.
 
-![Imagem da interface do aplicativo](../img/aplicativo-desktop.png)
-
 ## Funcionalidades
 
 - Página inicial com opções para buscar por:
